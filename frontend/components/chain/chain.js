@@ -80,18 +80,18 @@ export default function Chain({ chain, setPopupVisible, setPopupData }) {
     setPopupVisible(true);
   };
 
-  const renderProviderText = () => {
-    if (account && account.address) {
-      const providerTextList = {
-        Metamask: "Add to Metamask",
-        imToken: "Add to imToken",
-        Wallet: "Add to Wallet",
-      };
-      return providerTextList[getProvider()];
-    } else {
-      return "Connect wallet";
-    }
-  };
+  // const renderProviderText = () => {
+  //   if (account && account.address) {
+  //     const providerTextList = {
+  //       Metamask: "Add to Metamask",
+  //       imToken: "Add to imToken",
+  //       Wallet: "Add to Wallet",
+  //     };
+  //     return providerTextList[getProvider()];
+  //   } else {
+  //     return "Connect wallet";
+  //   }
+  // };
 
   if (!chain) {
     return <div></div>;
@@ -150,7 +150,7 @@ export default function Chain({ chain, setPopupVisible, setPopupData }) {
       </div>
       <div className={classes.addButton}>
         <Button variant="outlined" color="primary" onClick={openModal}>
-          {renderProviderText()}
+          View Contracts
         </Button>
       </div>
     </Paper>
