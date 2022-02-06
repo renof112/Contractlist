@@ -29,6 +29,7 @@ import useSWR from "swr";
 
 import classes from "./index.module.css";
 import Popup from "../components/popup/popup";
+import contracts from "../public/contracts.json";
 
 const searchTheme = createMuiTheme({
   palette: {
@@ -140,9 +141,9 @@ function Home({ changeTheme, theme }) {
                 Instantly access Smart Contract addresses of Blockchain Projects
               </Typography>
               <Typography className={classes.subTitle}>
-                Contractlist is a list of smart contract addresses of popular DApps and
-                Protocols. Developers can use the platform to view latest contracts and 
-                addresses.
+                Contractlist is a list of smart contract addresses of popular
+                DApps and Protocols. Developers can use the platform to view
+                latest contracts and addresses.
               </Typography>
               <Button
                 size="large"
@@ -229,7 +230,7 @@ function Home({ changeTheme, theme }) {
               {/* {hideMultichain === "0" && (
                 <MultiChain closeMultichain={closeMultichain} />
               )} */}
-              {data &&
+              {/* {data &&
                 data
                   .filter((chain) => {
                     if (search === "") {
@@ -265,16 +266,35 @@ function Home({ changeTheme, theme }) {
                         setPopupData={setPopupData}
                       />
                     );
-                  })}
+                  })} */}
+              {contracts
+                ?.filter((contract) => {
+                  if (search === "") {
+                    return true;
+                  } else {
+                    return (
+                      contract.chains.includes(search.toLowerCase()) ||
+                      contract.name.toLowerCase().includes(search.toLowerCase())
+                    );
+                  }
+                })
+                ?.map((contract, i) => (
+                  <Chain
+                    chain={contract}
+                    key={i}
+                    setPopupVisible={setPopupVisible}
+                    setPopupData={setPopupData}
+                  />
+                ))}
             </div>
           </div>
         </div>
+        <Popup
+          visible={popupVisible}
+          data={popupData}
+          setVisible={setPopupVisible}
+        />
       </main>
-      <Popup
-        visible={popupVisible}
-        data={popupData}
-        setVisible={setPopupVisible}
-      />
     </div>
   );
 }

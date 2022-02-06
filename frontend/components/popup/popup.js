@@ -1,11 +1,14 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import classes from "./popup.module.css";
+import chainList from "../../utils/chainlist.json";
+import { Paper, useTheme } from "@material-ui/core";
 
 const Popup = ({ visible, setVisible, data }) => {
   const [activeTab, setActiveTab] = useState();
   const [isMobile, setIsMobile] = useState(true);
   const [checked, setChecked] = useState();
-  const popupRef = useRef();
+
+  const theme = useTheme();
 
   useEffect(() => {
     if (window?.innerWidth > 800) setIsMobile(false);
@@ -32,7 +35,7 @@ const Popup = ({ visible, setVisible, data }) => {
 
   return (
     <div className={classes.popup__container} onClick={handleClick}>
-      <div className={classes.popup} id="popup">
+      <Paper elevation={1} className={classes.popup} id="popup">
         <div className={classes.popup__closebtn}>
           <div onClick={() => setVisible(false)}>&times;</div>
         </div>
@@ -42,18 +45,18 @@ const Popup = ({ visible, setVisible, data }) => {
           rel="noopener noreferrer"
           className={classes.popup__title}
         >
-          <img src={data.icon} alt={data.name} />
+          <img src={data.icon} alt={data.name} height={40} width={40} />
           {data.name}
         </a>
         <div className={classes.chainList}>
-          {data?.chains?.map((chain, i) => (
+          {data?.chains?.map((chainId, i) => (
             <span
               className={`${classes.popup__chain} ${
-                activeTab === chain ? classes.tab__active : ""
+                activeTab === chainId ? classes.tab__active : ""
               }`}
-              onClick={() => setActiveTab(chain)}
+              onClick={() => setActiveTab(chainId)}
             >
-              {chain}
+              {chainList[chainId]}
             </span>
           ))}
         </div>
@@ -79,7 +82,9 @@ const Popup = ({ visible, setVisible, data }) => {
                   </p>
                 ) : (
                   <img
-                    src="https://img.icons8.com/material-rounded/50/000000/copy.png"
+                    src={`https://img.icons8.com/material-rounded/50/${
+                      theme.palette.type === "dark" ? "ffffff" : "000000"
+                    }/copy.png`}
                     alt="Copy to Clipboard"
                     className={classes.copy}
                     onClick={() => copyAddressToClipboard(d?.address)}
@@ -89,7 +94,7 @@ const Popup = ({ visible, setVisible, data }) => {
             </div>
           ))}
         </table>
-      </div>
+      </Paper>
     </div>
   );
 };

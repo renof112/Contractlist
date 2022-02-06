@@ -4,6 +4,7 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import { useRouter } from "next/router";
 import Web3 from "web3";
 
+import chainList from "../../utils/chainlist.json";
 import classes from "./chain.module.css";
 
 import stores from "../../stores/index.js";
@@ -75,56 +76,7 @@ export default function Chain({ chain, setPopupVisible, setPopupData }) {
   // }
 
   const openModal = () => {
-    setPopupData({
-      name: "Aave",
-      chains: ["ETH", "Polygon", "Mumbai"],
-      icon: "aave",
-      infoURL: "https://app.aave.com/",
-      contracts: {
-        ETH: [
-          {
-            name: "LendingPoolAddressesProvider",
-            github:
-              "https://github.com/aave/protocol-v2/blob/ice/mainnet-deployment-03-12-2020/contracts/protocol/configuration/LendingPoolAddressesProvider.sol",
-            address: "0xd05e3E715d945B59290df0ae8eF85c1BdB684744",
-          },
-          {
-            name: "LendingPoolAddressesProviderRegistry",
-            github:
-              "https://github.com/aave/protocol-v2/blob/ice/mainnet-deployment-03-12-2020/contracts/protocol/configuration/LendingPoolAddressesProvider.sol",
-            address: "0x3ac4e9aa29940770aeC38fe853a4bbabb2dA9C19",
-          },
-        ],
-        Polygon: [
-          {
-            name: "LendingPoolAddressesProvider",
-            github:
-              "https://github.com/aave/protocol-v2/blob/ice/mainnet-deployment-03-12-2020/contracts/protocol/configuration/LendingPoolAddressesProvider.sol",
-            address: "0x26db2B833021583566323E3b8985999981b9F1F3",
-          },
-          {
-            name: "LendingPoolAddressesProviderRegistry",
-            github:
-              "https://github.com/aave/protocol-v2/blob/ice/mainnet-deployment-03-12-2020/contracts/protocol/configuration/LendingPoolAddressesProvider.sol",
-            address: "0x17f73aead876cc4059089ff815eda37052960dfb",
-          },
-        ],
-        Mumbai: [
-          {
-            name: "LendingPoolAddressesProvider",
-            github:
-              "https://github.com/aave/protocol-v2/blob/ice/mainnet-deployment-03-12-2020/contracts/protocol/configuration/LendingPoolAddressesProvider.sol",
-            address: "0xbad24a42b621eed9033409736219c01bf0d8500f",
-          },
-          {
-            name: "LendingPoolAddressesProviderRegistry",
-            github:
-              "https://github.com/aave/protocol-v2/blob/ice/mainnet-deployment-03-12-2020/contracts/protocol/configuration/LendingPoolAddressesProvider.sol",
-            address: "0x3ac4e9aa29940770aeC38fe853a4bbabb2dA9C19",
-          },
-        ],
-      },
-    });
+    setPopupData(chain);
     setPopupVisible(true);
   };
 
@@ -149,7 +101,7 @@ export default function Chain({ chain, setPopupVisible, setPopupData }) {
     <Paper elevation={1} className={classes.chainContainer} key={chain.chainId}>
       <div className={classes.chainNameContainer}>
         <img
-          src="/connectors/icn-asd.svg"
+          src={chain?.icon}
           onError={(e) => {
             e.target.onerror = null;
             e.target.src = "/chains/unknown-logo.png";
@@ -173,11 +125,17 @@ export default function Chain({ chain, setPopupVisible, setPopupData }) {
             color="textSecondary"
             className={classes.dataPointHeader}
           >
-            ChainID
+            Chains
           </Typography>
-          <Typography variant="h5">{chain.chainId}</Typography>
+          <div className={classes.chains}>
+            {chain?.chains?.map((chainId, i) => (
+              <Typography variant="h5" key={i}>
+                {chainList[chainId]}
+              </Typography>
+            ))}
+          </div>
         </div>
-        <div className={classes.dataPoint}>
+        {/* <div className={classes.dataPoint}>
           <Typography
             variant="subtitle1"
             color="textSecondary"
@@ -188,7 +146,7 @@ export default function Chain({ chain, setPopupVisible, setPopupData }) {
           <Typography variant="h5">
             {chain.nativeCurrency ? chain.nativeCurrency.symbol : "none"}
           </Typography>
-        </div>
+        </div> */}
       </div>
       <div className={classes.addButton}>
         <Button variant="outlined" color="primary" onClick={openModal}>
