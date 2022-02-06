@@ -11,6 +11,13 @@ dotenv.config();
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
+
+const accounts = {
+  mnemonic:
+    process.env.MNEMONIC ||
+    "test test test test test test test test test test test test",
+};
+
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   const accounts = await hre.ethers.getSigners();
 
@@ -29,6 +36,16 @@ const config: HardhatUserConfig = {
       url: process.env.ROPSTEN_URL || "",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    matic: {
+      url: `https://polygon-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+      accounts,
+      gasPrice: 31000000000
+    },
+    mumbai: {
+      url: `https://polygon-mumbai.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+      gasPrice: 30000000000,
+      accounts,
     },
   },
   gasReporter: {

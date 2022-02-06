@@ -12,7 +12,7 @@ contract APIConsumer is ChainlinkClient, Ownable {
     uint256 private fee;
     string private api_endpoint;
 
-    address public addr;
+    address public requestedContractAddress;
     string public pathOfValue = "body";
     
     constructor(address _linkaddress, address _oracle, bytes32 _jobId) {
@@ -109,6 +109,6 @@ contract APIConsumer is ChainlinkClient, Ownable {
     }    
    
     function fulfill(bytes32 _requestId, bytes32 _addr) public recordChainlinkFulfillment(_requestId)  {
-        addr = address(uint160(uint256(_addr)));
+        requestedContractAddress = address(uint160(uint256(_addr)));
     }    
 }

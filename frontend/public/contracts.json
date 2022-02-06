@@ -468,13 +468,13 @@
         ]
     }
 },
-    {
+{
     "name":"Kommunitas",
-    "chains": ["Polygon","Ethereum"],
+    "chains": [137, 1],
     "icon":"https://polygon.technology/_nuxt/img/att1Qfltr92ZbaSsZ.88f5103.png",
     "infoURL":"https://kommunitas.net/",
     "contracts":{
-        "Polygon": [
+        "137": [
             {
                 "name":"KOM Token",
                 "github":"",
@@ -504,88 +504,84 @@
                 "name":"KOM Token",
                 "github":"",
                 "address":"0xc004e2318722ea2b15499d6375905d75ee5390b8"
-            },
+            }
         ],
-        "Ethereum": [
+        "1": [
             {
                 "name":"KOM Token (BSC)",
                 "github":"",
                 "address":"0x471ea49dd8e60e697f4cac262b5fafcc307506e4"
-            },
+            }
         ]
     }
 },
 {
     "name":"FUNDS",
-    "chains": ["Polygon"],
+    "chains": [137],
     "icon":"https://polygon.technology/_nuxt/img/attPBHeum1UZGeogU.723c85e.jpg",
     "infoURL":"https://funds.one/",
     "contracts":{
-        "Polygon": [
+        "137": [
             {
                 "name":"Funds Token",
                 "github":"",
                 "address":"0x77a4ce7b82b69d48718a2d0c1eeb2fd03122da84"
-            },
-            
+            }            
         ]
     }
 },
 {
     "name":"ChessBet",
-    "chains": ["Polygon"],
+    "chains": [137],
     "icon":"https://polygon.technology/_nuxt/img/att0ADiL7A7jAByft.51cd7c1.png",
     "infoURL":"https://chessbet.games/?mode=testnet",
     "contracts":{
-        "Polygon": [
+        "137": [
             {
                 "name":"Funds Token",
                 "github":"",
                 "address":"0xe617D9a72057AB3a0F8e92020984254cf7319786"
-            },
-            
+            }            
         ]
     }
 },
 {
     "name":"0xCrypto.io",
-    "chains": ["Polygon"],
+    "chains": [137],
     "icon":"https://polygon.technology/_nuxt/img/att4g8Si9gBfLLojg.1521b6b.png",
     "infoURL":"https://0xcrypto.io/",
     "contracts":{
-        "Polygon": [
+        "137": [
             {
                 "name":"PageFactory",
                 "github":"https://github.com/0xcrypto-io/contracts/blob/main/PageFactory.sol",
                 "address":"0xb05ac5FBc473C9BB60654338fD72930B71E76BED"
-            },
-            
+            }            
         ]
     }
 },
 {
     "name":"KuKu Token",
-    "chains": ["Ethereum"],
+    "chains": [1],
     "icon":"https://polygon.technology/_nuxt/img/att90QRNTyBGE2b7N.0f73031.png",
     "infoURL":"https://kukutoken.com/",
     "contracts":{
-        "Ethereum": [
+        "1": [
             {
                 "name":"KuKu Token",
                 "github":"https://github.com/devplex69/KuKuToken/blob/main/KuKuToken%20Smart%20Contract.sol",
                 "address":"0x97915fC7E7ad4558346F5eD956dA016C9b75533F"
-            },
-            
+            }            
         ]
     }
 },
 {
     "name":"The Graph",
-    "chains": ["Ethereum","Rinkeby"],
+    "chains": [1, 4],
     "icon":"https://polygon.technology/_nuxt/img/att8fQgnYoLZzJgAP.f5f864c.jpg",
     "infoURL":"https://thegraph.com/en/",
     "contracts":{
-        "Ethereum": [
+        "1": [
             {
                 "name":"Staking",
                 "github":"https://github.com/graphprotocol/contracts/blob/dev/contracts/staking/Staking.sol",
@@ -640,9 +636,9 @@
                 "name":"SubgraphNFT",
                 "github":"https://github.com/graphprotocol/contracts/blob/dev/contracts/discovery/SubgraphNFT.sol",
                 "address":"0x24e36639b3A3aaA9c928a8A6f12d34F942f1ab67"
-            },
+            }
         ],
-        "Rinkeby": [
+        "4": [
             {
                 "name":"Staking",
                 "github":"https://github.com/graphprotocol/contracts/blob/dev/contracts/staking/Staking.sol",
@@ -697,36 +693,36 @@
                 "name":"SubgraphNFT",
                 "github":"https://github.com/graphprotocol/contracts/blob/dev/contracts/discovery/SubgraphNFT.sol",
                 "address":"0x44d9D2e16eF55E55D7cc99F42425f9b750659dAB"
-            },
+            }
         ]
     }
 },
 {
     "name":"Chainlink",
-    "chains": ["Ethereum","Polygon","Binance"],
+    "chains": [1, 137, 56],
     "icon":"https://polygon.technology/_nuxt/img/attysqklNT7ATMroq.a36a2e7.png",
     "infoURL":"https://chain.link/",
     "contracts":{
-        "Ethereum": [
+        "1": [
             {
                 "name":"ChainLink Token",
                 "github":"",
                 "address":"0x514910771af9ca656af840dff83e8264ecf986ca"
-            },  
+            }
         ],
-        "Polygon": [
+        "137": [
             {
                 "name":"ChainLink Token",
                 "github":"",
                 "address":"0xb0897686c545045aFc77CF20eC7A532E3120E0F1"
-            },  
+            }
         ],
-        "Binance Smart Chain": [
+        "56": [
             {
                 "name":"ChainLink Token",
                 "github":"",
                 "address":"0x404460C6A5EdE2D891e8297795264fDe62ADBB75"
-            },  
+            }
         ]
 
     }

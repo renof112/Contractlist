@@ -7,7 +7,7 @@ import { ethers } from "hardhat";
 
 const LINKAddress = "0x326c977e6efc84e512bb9c30f76e30c160ed06fb";
 const oracleAddress = "0xc8D925525CA8759812d0c299B90247917d4d4b7C";
-const jobId = "a7330d0b4b964c05abc66a26307047c0";
+const jobId = "0x6137333330643062346239363463303561626336366132363330373034376330";
 
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
@@ -22,6 +22,8 @@ async function main() {
   const apiConsumer = await _APIConsumer.deploy(LINKAddress, oracleAddress, jobId);
 
   await apiConsumer.deployed();
+
+  await apiConsumer.setAPIEndpoint("https://contractlist.vercel.app/api");
 
   console.log("Deployed address:", apiConsumer.address);
 }
