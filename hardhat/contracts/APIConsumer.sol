@@ -4,16 +4,16 @@ pragma solidity ^0.8.0;
 import "@chainlink/contracts/src/v0.8/ChainlinkClient.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract APIConsumer is ChainlinkClient, Ownable {
+contract ContractlistAPIConsumer is ChainlinkClient, Ownable {
     using Chainlink for Chainlink.Request;
     
     address private oracle;
     bytes32 private jobId;
     uint256 private fee;
-    string private api_endpoint;
 
-    address public requestedContractAddress;
+    address public getRequestedContractAddress;
     string public pathOfValue = "body";
+    string public api_endpoint;
     
     constructor(address _linkaddress, address _oracle, bytes32 _jobId) {
         setChainlinkToken(_linkaddress);                                                                                                                                                                        
@@ -109,6 +109,6 @@ contract APIConsumer is ChainlinkClient, Ownable {
     }    
    
     function fulfill(bytes32 _requestId, bytes32 _addr) public recordChainlinkFulfillment(_requestId)  {
-        requestedContractAddress = address(uint160(uint256(_addr)));
+        getRequestedContractAddress = address(uint160(uint256(_addr)));
     }    
 }
