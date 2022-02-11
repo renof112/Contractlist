@@ -1,6 +1,9 @@
 # Contractlist
 
 A comprehensive list of smart contract addresses of popular DApps and Protocols
+
+*Note: The front-end UI is a fork of Chainlist*
+
 <br/>
 <div align="center">
   <img src="./frontend/public/favicon.png" />
